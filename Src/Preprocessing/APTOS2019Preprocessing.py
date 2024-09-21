@@ -11,9 +11,9 @@ os.makedirs(output_directory, exist_ok=True)
 
 # The image transformation with normalisation is defined
 transform = transforms.Compose([
-    transforms.ToTensor(), # Standardises from 0-255 to 0-1
-    transforms.Normalize(mean=[0.485, 0.456, 0.406],  # Normalising using ImageNet mean
-                         std=[0.229, 0.224, 0.225])  # Normalising using ImageNet standard deviation 
+    transforms.ToTensor(), # Normalises from 0-255 to 0-1
+    transforms.Normalize(mean=[0.485, 0.456, 0.406],  # Standardises using ImageNet mean and standard deviation (mean = 0, s.d =1)
+                         std=[0.229, 0.224, 0.225])  # Performs the operation: Standardised value = (Original Val - Mean)/Standard Deviation
 ])
 
 def resize_and_pad_image(img):
