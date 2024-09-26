@@ -11,7 +11,8 @@ num_ftrs = model.fc.in_features
 model.fc = nn.Linear(num_ftrs, 1)  # Binary classification layer
 
 # Load the saved weights from fine-tuned model
-model.load_state_dict(torch.load("Models/resnet18_fundus_binary.pth"))
+# model.load_state_dict(torch.load("Models/resnet18_fundus_binary.pth")) ---------------------------------------------
+model.load_state_dict(torch.load("Models/resnet18_best_resizeWithAspectRatioKept.pth"))
 
 # Set the model to evaluation mode (important for inference)
 model.eval()
@@ -32,14 +33,15 @@ def resize_and_pad_image(img):
     return new_img
 
 # Load the original image
-original_image_path = "Data/APTOS-2019 Dataset/val_images/02dda30d3acf.png"
+original_image_path = "Data/APTOS-2019 Dataset/val_images/0c76fd494af6.png"
 original_img = Image.open(original_image_path)
 
-preprocessed_image_path = "Data/APTOS-2019 Dataset/preprocessed_val_images/02dda30d3acf.png" 
-preprocessed_img = Image.open(preprocessed_image_path)
+#preprocessed_image_path = "Data/APTOS-2019 Dataset/preprocessed_val_images/02dda30d3acf.png" -----------------
+#preprocessed_img = Image.open(preprocessed_image_path) -------------------------------------------------------
 
 # Resize and pad the image
 resized_original_img = resize_and_pad_image(original_img)
+preprocessed_img = resize_and_pad_image(original_img) #--------------------------------------------------------
 
 # Convert the resized image to a tensor without normalizing (for model input)
 transform = transforms.ToTensor()
