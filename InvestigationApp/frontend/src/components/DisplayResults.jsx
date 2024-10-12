@@ -11,7 +11,7 @@ const DisplayResults = ({ results }) => {
 
   return (
     <div className="bg-white p-4 h-1/2 w-full flex flex-col justify-center items-center">
-      <h2 className="text-3xl font-bold font-martel text-center mb-4">Display Results</h2>
+      <h2 className="text-2xl font-bold font-martel text-center mb-4">Model Results</h2>
       <div className="flex flex-col items-center">
         {/* Circular progress bar for confidence */}
         <div className="w-24 h-24 mb-2">
@@ -19,8 +19,8 @@ const DisplayResults = ({ results }) => {
             value={confidence} // Directly use the confidence value as it is already a percentage
             text={`${confidence.toFixed(2)}%`} // Display the percentage with two decimal points
             styles={buildStyles({
-              pathColor: `#3b82f6`, // Blue color for the progress path
-              textColor: '#3b82f6', // Matching text color
+              pathColor: '#1e3a8a', // Blue color for the progress path
+              textColor: '#1e3a8a', // Matching text color
               trailColor: '#d6d6d6', // Light gray trail color
               textSize: '16px', // Size of the text inside the circle
             })}
