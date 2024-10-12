@@ -33,7 +33,7 @@ def resize_and_pad_image(img):
     return new_img
 
 # Load the original image
-original_image_path = "Data/APTOS-2019 Dataset/val_images/0a61bddab956.png"
+original_image_path = "Data/APTOS-2019 Dataset/test_images/fdd534271f3d.png"
 original_img = Image.open(original_image_path)
 
 #preprocessed_image_path = "Data/APTOS-2019 Dataset/preprocessed_val_images/02dda30d3acf.png" #-----------------
