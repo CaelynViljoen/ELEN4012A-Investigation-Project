@@ -1,3 +1,7 @@
 InvestigationEnv/
 Data/
 Models/
+InvestigationApp/backend/exudates
+InvestigationApp/backend/saliency_maps
+InvestigationApp/backend/uploads
+InvestigationApp/frontend/node_modules
