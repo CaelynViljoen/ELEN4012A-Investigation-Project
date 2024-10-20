@@ -121,6 +121,9 @@ if __name__ == '__main__':
     skf = StratifiedKFold(n_splits=5)
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     
+    # Define the class weights based on your dataset
+    class_weights = torch.tensor([0.5, 1.5, 1.0, 3.0, 2.5], device=device)  # Adjust weights as needed
+
     # Store metrics for each fold
     fold_metrics = []
     best_model_wts = None
@@ -139,7 +142,8 @@ if __name__ == '__main__':
         model.fc = nn.Linear(num_ftrs, 5)  # Multiclass classification with five outputs
         
         model = model.to(device)
-        criterion = nn.CrossEntropyLoss()
+        # Use weighted cross-entropy loss
+        criterion = nn.CrossEntropyLoss(weight=class_weights)
         optimizer = optim.Adam(model.parameters(), lr=0.001)
         
         # Train and evaluate the model on the current fold
@@ -157,7 +161,7 @@ if __name__ == '__main__':
     
     # Save the best model based on validation accuracy
     if best_model_wts:
-        best_model_save_path = "multiclass_resnet.pth"
+        best_model_save_path = "weighted_multiclass_resnet.pth"
         torch.save(best_model_wts, best_model_save_path)
         print(f"Best model saved to {best_model_save_path} with Validation Accuracy: {best_val_accuracy:.4f}%")
 
